@@ -1,0 +1,151 @@
+.staff-admission-schedule-container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #f8fafc;
+  min-height: 100vh;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px #ffecb3;
+}
+
+.staff-admission-schedule-title {
+  text-align: center;
+  margin-bottom: 32px;
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #ff9800 60%, #ffc107 100%);
+  border-radius: 12px;
+  padding: 18px 0 16px 0;
+  box-shadow: 0 2px 8px #ffecb3;
+  text-shadow: 0 2px 8px #ffb30099;
+}
+
+.staff-admission-schedule-table-container {
+  background: #fffbe7;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 24px 10px 24px 10px;
+  overflow-x: auto;
+}
+
+.staff-admission-schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.staff-admission-schedule-table th,
+.staff-admission-schedule-table td {
+  padding: 13px 10px;
+  border: 1px solid #ffe0b2;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.staff-admission-schedule-table th {
+  background: #ffe0b2;
+  color: #ff9800;
+  font-weight: 700;
+}
+
+.staff-admission-schedule-table td {
+  background: #fffbe7;
+  color: #222;
+}
+
+.staff-admission-schedule-table td:nth-child(2) {
+  color: #111;
+  font-weight: 600;
+}
+
+.staff-admission-schedule-table tbody tr:hover {
+  background: #fff8e1;
+}
+
+.staff-admission-schedule-btn, .staff-admission-schedule-submit-btn {
+  padding: 8px 18px;
+  background: linear-gradient(90deg, #ff9800 60%, #ffc107 100%);
+  color: #fff;
+  border: none;
+  border-radius: 30px 30px 8px 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px #0002;
+  transition: background 0.2s;
+  margin: 0 2px;
+}
+.staff-admission-schedule-btn:hover, .staff-admission-schedule-submit-btn:hover {
+  background: linear-gradient(90deg, #fb8c00 60%, #ffb300 100%);
+}
+
+.staff-admission-schedule-cancel-btn {
+  padding: 8px 16px;
+  background: #eee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.staff-admission-schedule-cancel-btn:hover {
+  background: #ffe0b2;
+}
+
+.staff-admission-schedule-modal-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.18);
+  z-index: 1000;
+}
+
+.staff-admission-schedule-modal {
+  position: fixed;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  z-index: 1001;
+  background: #fffbe7;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px #0002;
+  padding: 32px;
+  min-width: 320px;
+}
+
+.staff-admission-schedule-modal label {
+  font-weight: 500;
+  color: #ff9800;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.staff-admission-schedule-modal input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1.2px solid #bdbdbd;
+  margin-top: 6px;
+  font-size: 1rem;
+  background: #fff;
+  color: #222 !important;
+  transition: border 0.2s;
+}
+.staff-admission-schedule-modal input::placeholder {
+  color: #888 !important;
+  opacity: 1;
+}
+.staff-admission-schedule-modal input:focus {
+  border: 1.2px solid #ff9800;
+  outline: none;
+}
+
+.staff-admission-schedule-modal h2 {
+  color: #ff9800;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}

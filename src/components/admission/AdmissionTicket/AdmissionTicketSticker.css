@@ -1,0 +1,58 @@
+.admission-ticket-sticker {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  background: linear-gradient(90deg, #ff9800 60%, #ffc107 100%);
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 30px 30px 8px 30px;
+  box-shadow: 0 4px 16px #0002;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+.admission-ticket-sticker:hover {
+  background: linear-gradient(90deg, #fb8c00 60%, #ffb300 100%);
+}
+
+.admission-ticket-modal-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.18);
+  z-index: 1000;
+}
+
+.admission-ticket-modal {
+  position: fixed;
+  right: 40px;
+  bottom: 80px;
+  z-index: 1002;
+  background: none;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+.admission-ticket-form {
+  max-width: 360px;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.admission-ticket-sent {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 32px 40px;
+  color: #ff9800;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}

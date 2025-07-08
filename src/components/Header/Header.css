@@ -1,0 +1,238 @@
+.header {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-top {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.header-top-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.user-icon {
+  width: 16px;
+  height: 16px;
+  color: #FF6B00;
+}
+
+.user-name {
+  color: #333;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.login-btn {
+  color: #FF6B00;
+  border: 1px solid #FF6B00;
+  background: transparent;
+}
+
+.login-btn:hover {
+  background: #FF6B00;
+  color: white;
+}
+
+.register-btn {
+  color: white;
+  background: #FF6B00;
+  border: 1px solid #FF6B00;
+}
+
+.register-btn:hover {
+  background: #e55a00;
+  border-color: #e55a00;
+}
+
+.logout-btn {
+  color: #FF6B00;
+  border: 1px solid #FF6B00;
+  background: transparent;
+}
+
+.logout-btn:hover {
+  background: #FF6B00;
+  color: white;
+}
+
+.logout-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.language-switch {
+  display: flex;
+  gap: 5px;
+}
+
+.lang-btn {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.lang-btn.active {
+  background: #FF6B00;
+  color: white;
+  border-color: #FF6B00;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  width: 200px;
+}
+
+.search-box button {
+  padding: 8px 12px;
+  background: #FF6B00;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.main-nav {
+  background: #FF6B00;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li a {
+  color: white;
+  text-decoration: none;
+  padding: 15px 20px;
+  display: block;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.nav-menu li a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.mobile-menu-btn span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #FF6B00;
+    z-index: 1000;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .search-box input {
+    width: 150px;
+  }
+
+  .auth-buttons {
+    gap: 5px;
+  }
+
+  .auth-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .user-section {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .user-info {
+    font-size: 12px;
+  }
+} 

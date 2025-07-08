@@ -1,0 +1,202 @@
+body, .admission-schedule-container, .home {
+  background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%) !important;
+}
+
+.admission-schedule-container, .home {
+  box-shadow: 0 2px 16px #ffecb3;
+  border-radius: 18px;
+}
+
+.admission-schedule-title {
+  text-align: center;
+  margin-bottom: 32px;
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #ff9800 60%, #ffc107 100%);
+  border-radius: 12px;
+  padding: 18px 0 16px 0;
+  box-shadow: 0 2px 8px #ffecb3;
+  text-shadow: 0 2px 8px #ffb30099;
+}
+
+.admission-schedule-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
+.admission-schedule-btn {
+  padding: 12px 32px;
+  background: linear-gradient(90deg, #ff9800 60%, #ffc107 100%);
+  color: #fff;
+  border: none;
+  border-radius: 30px 30px 8px 30px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px #0002;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.admission-schedule-btn:hover {
+  background: linear-gradient(90deg, #fb8c00 60%, #ffb300 100%);
+}
+
+.admission-schedule-form-modal {
+  background: #fffbe7;
+  border: 1.5px solid #ff9800;
+  box-shadow: 0 2px 16px #0002;
+  padding: 32px 28px 24px 28px;
+  border-radius: 14px;
+  max-width: 420px;
+  margin: 0 auto 32px;
+  position: relative;
+  z-index: 10;
+}
+
+.admission-schedule-form-title {
+  margin-bottom: 20px;
+  color: #ff9800;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.admission-schedule-form-group {
+  margin-bottom: 18px;
+}
+
+.admission-schedule-form-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #ff9800;
+  font-size: 1rem;
+  letter-spacing: 0.2px;
+}
+
+.admission-schedule-form-input {
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 5px;
+  border: 1.2px solid #bdbdbd;
+  font-size: 1rem;
+  background: #fff;
+  color: #222;
+  transition: border 0.2s;
+}
+.admission-schedule-form-input:focus {
+  border: 1.2px solid #ff9800;
+  outline: none;
+}
+.admission-schedule-form-input::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+.admission-schedule-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.admission-schedule-cancel-btn {
+  padding: 8px 16px;
+  background: #eee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.admission-schedule-cancel-btn:hover {
+  background: #ffe0b2;
+}
+
+.admission-schedule-submit-btn {
+  padding: 8px 16px;
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.admission-schedule-submit-btn:hover {
+  background: #fb8c00;
+}
+
+.admission-schedule-table-container {
+  background: #fffbe7;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 24px 10px 24px 10px;
+  overflow-x: auto;
+}
+
+.admission-schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.admission-schedule-table th,
+.admission-schedule-table td {
+  padding: 13px 10px;
+  border: 1px solid #ffe0b2;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.admission-schedule-table th {
+  background: #ffe0b2;
+  color: #ff9800;
+  font-weight: 700;
+}
+
+.admission-schedule-table td {
+  background: #fffbe7;
+  color: #222;
+}
+
+.admission-schedule-table td:nth-child(2) {
+  color: #111;
+  font-weight: 600;
+}
+
+.admission-schedule-table tbody tr:hover {
+  background: #fff8e1;
+}
+
+.admission-schedule-empty {
+  text-align: center;
+  padding: 28px;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.back-to-home-btn {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  background: linear-gradient(90deg, #ff9800 60%, #ffc107 100%);
+  color: #fff;
+  border: none;
+  border-radius: 30px 30px 8px 30px;
+  padding: 10px 28px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px #0002;
+  z-index: 20;
+  transition: background 0.2s;
+}
+.back-to-home-btn:hover {
+  background: linear-gradient(90deg, #fb8c00 60%, #ffb300 100%);
+}
