@@ -18,9 +18,6 @@ function ChatBotPage() {
   // Add local state for pending messages
   const [pendingMessages, setPendingMessages] = useState<any[]>([]);
 
-  // Keep track of the previous message count
-  const prevMessageCountRef = useRef(0);
-
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -30,20 +27,23 @@ function ChatBotPage() {
   }, [messages, isTyping, pendingMessages]);
 
   useEffect(() => {
-    // If message count has increased (we received a new message from backend)
-    if (messages.length > prevMessageCountRef.current && pendingMessages.length > 0) {
-      // Update all pending messages to DELIVERED status
+    // When we receive new messages from backend, remove corresponding pending messages
+    if (messages.length > 0 && pendingMessages.length > 0) {
+      // Remove pending messages that have been delivered (match by content and user status)
       setPendingMessages(prev => 
-        prev.map(message => ({
-          ...message,
-          status: 'DELIVERED'
-        }))
+        prev.filter(pendingMsg => {
+          // Check if this pending message exists in the backend messages
+          const existsInBackend = messages.some(backendMsg => 
+            backendMsg.content === pendingMsg.content && 
+            backendMsg.isUser === pendingMsg.isUser &&
+            backendMsg.requestId === pendingMsg.requestId
+          );
+          // Keep pending message only if it doesn't exist in backend yet
+          return !existsInBackend;
+        })
       );
     }
-    
-    // Update the ref with current count
-    prevMessageCountRef.current = messages.length;
-  }, [messages.length, pendingMessages.length]);
+  }, [messages, pendingMessages]);
 
   const handleToggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -83,6 +83,8 @@ function ChatBotPage() {
           
           try {
             await sendMessage(firstMessage, newSessionId);
+            // Remove the pending message after successful send
+            setPendingMessages([]);
           } catch (sendError) {
             console.error('Error sending first message:', sendError);
             setPendingMessages(prev => 
@@ -142,6 +144,7 @@ function ChatBotPage() {
           // Send the message to the new session
           try {
             await sendMessage(content, newSessionId);
+            // Don't clear pending messages here - let the useEffect handle it when response comes
           } catch (sendError) {
             console.error('Error sending message:', sendError);
             setPendingMessages(prev => 
@@ -174,6 +177,7 @@ function ChatBotPage() {
       
       try {
         await sendMessage(content, currentSessionId);
+        // Don't clear pending messages here - let the useEffect handle it when response comes
       } catch (error) {
         console.error('Error sending message:', error);
         setPendingMessages(prev => 
@@ -199,26 +203,39 @@ function ChatBotPage() {
   };
 
   // Combine backend messages with pending messages
-  const displayMessages = [...messages, ...pendingMessages].sort((a, b) => {
-    // If messages have createdAt timestamps, use those (from backend)
-    if (a.createdAt && b.createdAt) {
-      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
-    }
-    
-    // For pending messages that don't have createdAt, extract timestamp from ID
-    const getTimeFromId = (id: string) => {
-      if (typeof id === 'string' && id.includes('temp-')) {
-        const timestamp = id.split('temp-')[1];
-        return parseInt(timestamp, 10);
+  const displayMessages = (() => {
+    // Filter out any pending messages that already exist in backend messages
+    const filteredPendingMessages = pendingMessages.filter(pendingMsg => {
+      return !messages.some(backendMsg => 
+        backendMsg.content === pendingMsg.content && 
+        backendMsg.isUser === pendingMsg.isUser &&
+        (backendMsg.requestId === pendingMsg.requestId || 
+         Math.abs(new Date(backendMsg.createdAt).getTime() - parseInt(pendingMsg.id.split('temp-')[1])) < 5000)
+      );
+    });
+
+    // Combine and sort all messages
+    return [...messages, ...filteredPendingMessages].sort((a, b) => {
+      // If messages have createdAt timestamps, use those (from backend)
+      if (a.createdAt && b.createdAt) {
+        return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
       }
-      return 0;
-    };
-    
-    const timeA = a.createdAt ? new Date(a.createdAt).getTime() : getTimeFromId(a.id);
-    const timeB = b.createdAt ? new Date(b.createdAt).getTime() : getTimeFromId(b.id);
-    
-    return timeA - timeB;
-  });
+      
+      // For pending messages that don't have createdAt, extract timestamp from ID
+      const getTimeFromId = (id: string) => {
+        if (typeof id === 'string' && id.includes('temp-')) {
+          const timestamp = id.split('temp-')[1];
+          return parseInt(timestamp, 10);
+        }
+        return 0;
+      };
+      
+      const timeA = a.createdAt ? new Date(a.createdAt).getTime() : getTimeFromId(a.id);
+      const timeB = b.createdAt ? new Date(b.createdAt).getTime() : getTimeFromId(b.id);
+      
+      return timeA - timeB;
+    });
+  })();
 
   // Quick start suggestions
   const quickStartSuggestions = [

@@ -142,27 +142,29 @@ export const useChat = (sessionId?: string | null) => {
         // Only add/update messages with actual content or status updates
         if (newMessage.content || newMessage.status === 'CANCELLED') {
           setMessages(prev => {
-            const exists = prev.some(m => 
+            // Check if message already exists by ID or requestId
+            const existingIndex = prev.findIndex(m => 
               m.id === newMessage.id || 
-              (m.requestId === newMessage.requestId && newMessage.requestId)
+              (m.requestId && newMessage.requestId && m.requestId === newMessage.requestId)
             );
             
-            if (exists) {
-              return prev.map(m => 
-                (m.id === newMessage.id || m.requestId === newMessage.requestId) 
-                  ? {
-                      ...newMessage,
-                      isUser: newMessage.role === ROLES.USER,
-                      timestamp: new Date(newMessage.createdAt || new Date()).toLocaleString()
-                    } 
-                  : m
-              );
-            } else {
-              return [...prev, {
+            if (existingIndex !== -1) {
+              // Update existing message
+              const updatedMessages = [...prev];
+              updatedMessages[existingIndex] = {
                 ...newMessage,
                 isUser: newMessage.role === ROLES.USER,
                 timestamp: new Date(newMessage.createdAt || new Date()).toLocaleString()
-              }];
+              };
+              return updatedMessages;
+            } else {
+              // Add new message
+              const newMsg = {
+                ...newMessage,
+                isUser: newMessage.role === ROLES.USER,
+                timestamp: new Date(newMessage.createdAt || new Date()).toLocaleString()
+              };
+              return [...prev, newMsg];
             }
           });
   
@@ -195,7 +197,7 @@ export const useChat = (sessionId?: string | null) => {
   const sendChatMessage = useCallback((content: string, currentSessionId?: string | null) => {
     if (!currentSessionId || !token) return;
     
-    setIsTyping(true);
+    // Don't set typing here - let the WebSocket response handle it
     
     // Create the message object
     const messageDTO = {
