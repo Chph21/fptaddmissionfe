@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Home from '../pages/Home/Home';
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/layout/Layout';
 import ChatBotPage from '../pages/ChatBot/ChatBotPage';
 import AdmissionSchedulePage from '../pages/AdmissionSchedule/AdmissionSchedulePage';
 import StaffAdmissionSchedulePage from '../pages/StaffAdmissionSchedule/StaffAdmissionSchedulePage';
